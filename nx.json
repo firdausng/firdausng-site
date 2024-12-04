@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "outputs": [
+        "{projectRoot}/.svelte-kit/cloudflare"
+      ],
+      "cache": true
+    },
+    "dev": {
+      "cache": true
+    },
+    "check": {
+      "cache": true
+    },
+    "check:watch": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "test:unit": {
+      "cache": true
+    },
+    "test": {
+      "cache": true
+    }
+  },
+  "defaultBase": "master"
+}
