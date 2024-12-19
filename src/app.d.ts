@@ -24,3 +24,12 @@ interface BlogComment {
 	content: string
 	createdAt: string
 }
+
+interface Platform {
+	env: {
+		YOUR_KV_NAMESPACE: KVNamespace;
+		YOUR_DURABLE_OBJECT_NAMESPACE: DurableObjectNamespace;
+	}
+	cf: CfProperties
+	ctx: ExecutionContext
+}
