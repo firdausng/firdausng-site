@@ -5,7 +5,15 @@ declare namespace App {
 	// interface Locals {}
 	// interface PageData {}
 	// interface Error {}
-	// interface Platform {}
+    interface Platform {
+        env: {
+            YOUR_KV_NAMESPACE: KVNamespace;
+            YOUR_DURABLE_OBJECT_NAMESPACE: DurableObjectNamespace;
+			MY_VARIABLE: string
+        }
+        cf: CfProperties
+        ctx: ExecutionContext
+    }
 }
 
 interface Post {
@@ -25,11 +33,3 @@ interface BlogComment {
 	createdAt: string
 }
 
-interface Platform {
-	env: {
-		YOUR_KV_NAMESPACE: KVNamespace;
-		YOUR_DURABLE_OBJECT_NAMESPACE: DurableObjectNamespace;
-	}
-	cf: CfProperties
-	ctx: ExecutionContext
-}
