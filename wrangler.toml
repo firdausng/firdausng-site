@@ -15,5 +15,5 @@ enabled = true
 MY_VARIABLE = "test"
 
 [[kv_namespaces]]
-binding = "KV_FROM_FIRDAUS"
+binding = "YOUR_KV_NAMESPACE"
 id = "0e0cee0606dd4334aeddbe0fd0a27011"
