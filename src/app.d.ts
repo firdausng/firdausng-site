@@ -7,7 +7,7 @@ declare namespace App {
 	// interface Error {}
     interface Platform {
         env: {
-            YOUR_KV_NAMESPACE: KVNamespace;
+			KV_FROM_FIRDAUS: KVNamespace;
             YOUR_DURABLE_OBJECT_NAMESPACE: DurableObjectNamespace;
 			MY_VARIABLE: string
         }
