@@ -5,7 +5,7 @@ description: SvelteKit is a powerful framework for building web applications, an
 categories:
   - sveltekit
   - svelte
-  - wails
+  - cloudflare
 image: /images/sveltekit-cloudflare.png
 author: Me
 published: true

@@ -17,10 +17,10 @@
     </div>
 
     <section class="mb-16 pt-4 flex flex-col container mx-auto group">
-        <div>
-            <h2 class="py-2 text-4xl drop-shadow-lg transition ease-in-out delay-150 group-hover:underline group-hover:decoration-primary-500 duration-1000 ">Blog</h2>
+        <div class="py-4">
+            <h2 class="py-2 text-4xl drop-shadow-lg transition ease-in-out delay-150 underline group-hover:decoration-primary-500 duration-1000 ">Blog</h2>
         </div>
-        <div class="grid grid-cols-2 gap-4 ">
+        <div class="grid grid-cols-3 gap-4 ">
             {#each data.posts as post}
                 <div class="border-s-4 shadow-sm border-l-primary-200 dark:border-l-primary-800">
                     <BlogCard {post} />

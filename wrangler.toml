@@ -11,9 +11,17 @@ assets = { directory = ".svelte-kit/cloudflare", binding = "ASSETS" }
 [observability]
 enabled = true
 
-[vars]
-MY_VARIABLE = "test"
+vars = { MY_VARIABLE = "from local wrangler.toml" }
 
-[[kv_namespaces]]
-binding = "YOUR_KV_NAMESPACE"
-id = "0e0cee0606dd4334aeddbe0fd0a27011"
+kv_namespaces = [
+    { binding = "YOUR_KV_NAMESPACE", id = "0e0cee0606dd4334aeddbe0fd0a27011" }
+]
+
+[env.production]
+
+vars = { MY_VARIABLE = "from wrangler.toml" }
+
+kv_namespaces = [
+    { binding = "YOUR_KV_NAMESPACE", id = "0e0cee0606dd4334aeddbe0fd0a27011" }
+]
+
