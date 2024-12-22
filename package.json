@@ -11,7 +11,8 @@
     "lint": "eslint .",
     "test:unit": "vitest",
     "test": "npm run test:unit -- --run",
-    "deploy": "pnpm run build && wrangler deploy",
+    "deploy:dev": "pnpm run build && wrangler deploy",
+    "deploy": "pnpm run build && wrangler deploy --env production",
     "cf-typegen": "wrangler types && move worker-configuration.d.ts src/"
   },
   "devDependencies": {

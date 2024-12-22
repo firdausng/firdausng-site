@@ -12,6 +12,7 @@ declare namespace App {
 			YOUR_KV_NAMESPACE: KVNamespace;
             YOUR_DURABLE_OBJECT_NAMESPACE: DurableObjectNamespace;
 			MY_VARIABLE: string
+			my_secret: string
         }
         cf: CfProperties
         ctx: ExecutionContext

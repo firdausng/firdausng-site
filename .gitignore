@@ -26,3 +26,4 @@ vite.config.ts.timestamp-*
 .nx/workspace-data
 .idea
 .wrangler
+/.dev.vars
