@@ -30,7 +30,7 @@
 </svelte:head>
 
 {#key post.slug}
-    <a class="shadow-sm shadow-primary-500 overflow-hidden w-full max-w-4xl " href={`/blog/${post.slug}`}>
+    <a class="shadow-sm shadow-primary-500 overflow-hidden w-full max-w-4xl " href={`/posts/${post.slug}`}>
         <header class="mb-4">
             {#if post.image}
                 <img class="object-cover" src={post.image} alt={post.title}/>

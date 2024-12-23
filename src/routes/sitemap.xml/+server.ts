@@ -3,14 +3,14 @@
 const site = 'https://firdausng.com'; // change this to reflect your domain
 const pages: string[] = [
     ``,
-    `blogs`,
+    `posts`,
     `about`,
 ]; 
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ url }) {
     const posts: Post[] = await getPosts();
-    const allBlogPages = posts.map(p => `blog/${p.slug}`)
+    const allBlogPages = posts.map(p => `posts/${p.slug}`)
     const body = sitemap([...pages, ...allBlogPages]);
     const response = new Response(body);
     response.headers.set('Cache-Control', 'max-age=0, s-maxage=3600');
