@@ -18,15 +18,18 @@
 
     <section class="mb-16 pt-4 flex flex-col container mx-auto group">
         <div class="py-4">
-            <h2 class="py-2 text-4xl drop-shadow-lg transition ease-in-out delay-150 underline group-hover:decoration-primary-500 duration-1000 ">Blog</h2>
+            <h2 class="py-2 text-4xl drop-shadow-lg transition ease-in-out delay-150 underline group-hover:decoration-primary-500 duration-1000 ">Latest</h2>
         </div>
-        <div class="grid grid-cols-3 gap-4 ">
-            {#each data.posts as post}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+            {#each data.first3Posts as post}
                 <div class="border-s-4 shadow-sm border-l-primary-200 dark:border-l-primary-800">
                     <BlogCard {post} />
                 </div>
                 
             {/each}
+        </div>
+        <div class="py-4">
+            <a href="/blog" class="text-primary-500 hover:underline text-xl">View all posts</a>
         </div>
     </section>
     

@@ -9,6 +9,7 @@ categories:
 image: /images/sveltekit-cloudflare.png
 author: Me
 published: true
+featured: true
 ---
 # Deploying SvelteKit to Cloudflare Pages: A Complete Guide
 

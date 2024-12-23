@@ -21,12 +21,14 @@ declare namespace App {
 
 interface Post {
 	title: string
+	author: string
 	slug: string
 	description: string
 	image?: string
 	date: string
 	categories: string[]
 	published: boolean
+	featured?: boolean
 }
 
 interface BlogComment {
