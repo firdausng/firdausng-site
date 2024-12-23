@@ -44,7 +44,7 @@ export let data;
     <!-- Tags -->
     <div class="flex flex-wrap gap-4 mb-6">
         {#each data.meta.categories as category}
-            <a href={`/blog/categories/${category}`} class="chip variant-filled-secondary no-underline"
+            <a href={`/tags/${category}`} class="chip variant-filled-secondary no-underline"
             >&num;{category}</a
             >
         {/each}

@@ -26,9 +26,13 @@ interface Post {
 	description: string
 	image?: string
 	date: string
-	categories: string[]
+	categories?: string[]
 	published: boolean
 	featured?: boolean
+}
+
+interface CategoryPosts {
+	[category: string]: Post[]
 }
 
 interface BlogComment {
