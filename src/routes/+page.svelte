@@ -1,5 +1,5 @@
 <script lang="ts">
-    import BlogCard from "$lib/components/BlogCard.svelte";
+    import BlogCard from "$lib/components/blogCard.svelte";
     let { data } = $props();
 </script>
 <div class="flex flex-col">
@@ -20,7 +20,7 @@
         <div class="py-4">
             <h2 class="py-2 text-4xl drop-shadow-lg transition ease-in-out delay-150 underline group-hover:decoration-primary-500 duration-1000 ">Latest</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
+        <div class="grid grid-cols-1 md:grid-cols-1 gap-4 ">
             {#each data.first3Posts as post}
                 <div class="border-s-4 shadow-sm border-l-primary-200 dark:border-l-primary-800">
                     <BlogCard {post} />
@@ -29,7 +29,7 @@
             {/each}
         </div>
         <div class="py-4">
-            <a href="/blog" class="text-primary-500 hover:underline text-xl">View all posts</a>
+            <a href="/blog" class="text-primary-500 hover:underline text-xl italic font-semibold">View all posts...</a>
         </div>
     </section>
     

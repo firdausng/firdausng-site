@@ -1,5 +1,5 @@
 ﻿<script lang="ts">
-    import BlogCard from "$lib/components/BlogCard.svelte";
+    import BlogCard from "$lib/components/blogCard.svelte";
     import {title} from "$lib/config";
     let { data } = $props();
 </script>
