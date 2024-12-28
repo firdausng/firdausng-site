@@ -45,7 +45,7 @@ In the todo-app folder, look for the **wails.json** file and add these lines:
 ## Step 3: Revamp the Frontend Svelte App
 Delete the **frontend** directory and run the following command to set up Sveltekit:
 ```shell
-pnpm create svelte@latest frontend
+npx sv create frontend
 ```
 When prompted:
 - Opt for the **Skeleton Project**

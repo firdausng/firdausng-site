@@ -30,7 +30,7 @@ Before we begin, make sure you have:
 If you haven't already created your SvelteKit project, you can do so using the following commands:
 
 ```bash
-npm create svelte@latest my-sveltekit-app
+npx sv create my-sveltekit-app
 cd my-sveltekit-app
 npm install
 ```

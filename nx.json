@@ -3,7 +3,7 @@
   "targetDefaults": {
     "build": {
       "outputs": [
-        "{projectRoot}/.svelte-kit/cloudflare"
+        "{projectRoot}/.sveltekit"
       ],
       "cache": true
     },
@@ -23,6 +23,12 @@
       "cache": true
     },
     "test": {
+      "cache": true
+    },
+    "deploy:dev": {
+      "cache": true
+    },
+    "deploy": {
       "cache": true
     }
   },
