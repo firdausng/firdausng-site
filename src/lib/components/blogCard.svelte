@@ -34,7 +34,7 @@
         <div class="w-full">
             <div class="grid grid-cols-3 ">
                 {#if post.image}
-                    <div class="bg-cover bg-no-repeat bg-center bg-blend-lighten dark:bg-blend-darken bg-primary-50/90 dark:bg-primary-950/90" style="background-image: url({post.image})">
+                    <div class="bg-cover bg-no-repeat bg-center bg-blend-lighten dark:bg-blend-darken bg-primary-50/90 dark:bg-primary-950/90 border">
                         <header class="mb-4">
                             <img class="object-cover" src={post.image} alt={post.title}/>
                         </header>
