@@ -9,9 +9,9 @@
 </svelte:head>
 
 <section class="mb-16">
-    <ul class="flex flex-col items-center gap-4">
+    <ul class="flex flex-col items-center gap-8 pt-8">
         {#each data.posts as post}
             <BlogCard {post} />
         {/each}
     </ul>
-</section>
+</section>  

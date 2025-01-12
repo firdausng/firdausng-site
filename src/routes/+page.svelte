@@ -29,7 +29,7 @@
             {/each}
         </div>
         <div class="py-4">
-            <a href="/blog" class="text-primary-500 hover:underline text-xl italic font-semibold">View all posts...</a>
+            <a href="/posts" class="text-primary-500 hover:underline text-xl italic font-semibold">View all posts...</a>
         </div>
     </section>
     
