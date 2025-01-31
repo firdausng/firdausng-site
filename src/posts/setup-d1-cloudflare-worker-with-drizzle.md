@@ -92,7 +92,8 @@ export default defineConfig({
     out: './migrations',  
     schema: './src/db/schema.ts',  
     dialect: 'sqlite',  
-});```
+});
+```
 This config file will only be used for Db migration.
 
 Now we need to add Drizzle schema that will be used to generate the Db migration script
