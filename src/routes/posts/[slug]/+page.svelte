@@ -35,7 +35,9 @@ export let data;
     <!-- Title -->
     <hgroup class="flex flex-col items-center">
         <h1 class="">{data.meta.title}</h1>
-        <img src={data.meta.image} alt="blog banner" class="rounded-md" />
+        {#if data.meta.image}
+            <img src={data.meta.image} alt="blog banner" class="rounded-md" />
+        {/if}
         <p class="text-end text-sm">
             Published at {formatDate(data.meta.date)}
         </p>
