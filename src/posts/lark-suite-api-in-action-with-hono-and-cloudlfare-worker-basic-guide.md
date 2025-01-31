@@ -10,8 +10,6 @@ author: Me
 published: true
 featured: true
 ---
-# Guide to setup Lark Suite API
-
 Lark Suite is a application developed by ByteDance as 1 stop solution for all business need. 
 Lark Suite do provide a very generous free tier with many feature that can compete with the like of Google Workspace, Microsoft 365 or Zoho.
 Lark Suite also provide a comprehensive API that can be used to integrated with any site.
