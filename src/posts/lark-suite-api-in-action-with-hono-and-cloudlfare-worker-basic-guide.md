@@ -21,7 +21,7 @@ Before we begin, make sure you have:
 - Node.js installed on your machine
 
 ## Setting Up Your LarkSuite
-Before you can use LarkSuite API, you need to have Lark account. You can create the account using my referral here https://open.larksuite.com](https://www.larksuite.com/referral/a/firdauskamaruddin_gpok0f)
+Before you can use LarkSuite API, you need to have Lark account. You can create the account using my referral here [https://open.larksuite.com](https://www.larksuite.com/referral/a/firdauskamaruddin_gpok0f)
 Once you have Lark account, then navigate to https://open.larksuite.com/ to create the custom app. Here a brief steps on how to do that:
 
 1. Navigate to https://open.larksuite.com/
