@@ -7,7 +7,6 @@ categories:
   - cloudflare D1
   - Hono
   - Drizzle
-image: /images/worker_d1_drizzle_hono.svg
 author: Me
 published: true
 featured: true
