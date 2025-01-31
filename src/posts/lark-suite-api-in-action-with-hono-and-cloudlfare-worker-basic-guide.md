@@ -212,9 +212,13 @@ All these setup will help us to integrate Lark API in Hono app. Here is the basi
 import { Hono } from 'hono'
 import {App} from "./types";
 import {lark} from "./middlewares/lark";
+import {requestId} from "hono/request-id";
+import {logger} from "hono/logger";
 
 const app = new Hono<App>()
 
+app.use(requestId());
+app.use(logger());
 app.use(lark);
 
 app.get('/:appToken', async (c) => {
