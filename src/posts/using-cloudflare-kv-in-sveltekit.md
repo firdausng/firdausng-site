@@ -39,7 +39,7 @@ const config = {
 export default config;
 ```
 
-## Create and COnfigure Cloudflare KV namespace
+## Create and configure Cloudflare KV namespace
 In order to use cloudflare worker, it is best practise to install cloudflare `wrangler` cli.
 
 You can do that by running this command

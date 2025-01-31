@@ -32,9 +32,9 @@
 {#key post.slug}
     <a class="overflow-hidden w-full max-w-4xl " href={`/posts/${post.slug}`}>
         <div class="w-full">
-            <div class="grid grid-cols-3 ">
+            <div class="flex ">
                 {#if post.image}
-                    <div class="bg-cover bg-no-repeat bg-center bg-blend-lighten dark:bg-blend-darken bg-primary-50/90 dark:bg-primary-950/90 border">
+                    <div class="max-w-96 bg-cover bg-no-repeat bg-center bg-blend-lighten dark:bg-blend-darken bg-primary-50/90 dark:bg-primary-950/90 border">
                         <header class="mb-4">
                             <img class="object-cover" src={post.image} alt={post.title}/>
                         </header>
@@ -42,7 +42,7 @@
                 
                 {/if}
 
-                <div class="col-span-2">
+                <div class="grow">
                     <div class="p-4 space-y-4">
                         <h3 class="text-xl font-semibold tracking-wide" data-toc-ignore>{post.title}</h3>
                         <article>
