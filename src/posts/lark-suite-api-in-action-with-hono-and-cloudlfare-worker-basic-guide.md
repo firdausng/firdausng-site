@@ -250,6 +250,8 @@ app.notFound((c) => {
 export default app
 
 ```
+when you run the Hono App, you can send the request with `appToken`. This appToken should be available on your sheet. 
+You can get more information from this doc [List Table](https://open.larksuite.com/document/server-docs/docs/bitable-v1/app-table/list)
 
 ## Conclusion
 This guide will help you to use LarkSuite API to your application. I am using Hono as example but this can be applied in any web framework.
