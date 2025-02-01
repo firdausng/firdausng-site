@@ -11,8 +11,6 @@ author: Me
 published: true
 featured: true
 ---
-
-
 This guide covers configuring a D1 database using Drizzle in a Hono app deployed using Cloudflare Workers.
 
 To create a cloudflare worker app, we just need to run below command.

@@ -11,8 +11,6 @@ author: Me
 published: true
 featured: true
 ---
-# Deploying SvelteKit to Cloudflare Pages: A Complete Guide
-
 SvelteKit is a powerful framework for building web applications, and Cloudflare Pages provides an excellent platform for hosting them. This guide will walk you through the process of deploying your SvelteKit application to Cloudflare Pages, ensuring optimal performance and reliability.
 
 ## Prerequisites

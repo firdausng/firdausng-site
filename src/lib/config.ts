@@ -9,6 +9,7 @@ export const url = dev ? "http://localhost:5173" : "https://firdausng.com"
 
 export const navigations = [
     {name: 'Posts', path:'/posts', featured: true},
+    {name: 'Series', path:'/series', featured: true},
     {name: 'About', path:'/about', featured: true},
     {name: 'Tags', path:'/tags', featured: false},
 ]

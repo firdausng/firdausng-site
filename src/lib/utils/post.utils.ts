@@ -4,7 +4,7 @@
 
     for (const path in paths) {
         const file = paths[path]
-        const slug = path.split("/").at(-1)?.replace(".md", "")
+        const slug = "/posts/" + path.split("/").at(-1)?.replace(".md", "")
 
         if (file && typeof file === "object" && "metadata" in file && slug) {
             const metadata = file.metadata as Omit<Post, "slug">
@@ -29,7 +29,7 @@ export async function getPostTags() {
 
     for (const path in paths) {
         const file = paths[path]
-        const slug = path.split("/").at(-1)?.replace(".md", "")
+        const slug = "/posts/" + path.split("/").at(-1)?.replace(".md", "")
 
         if (file && typeof file === "object" && "metadata" in file && slug) {
             const metadata = file.metadata as Omit<Post, "slug">

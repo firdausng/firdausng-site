@@ -30,7 +30,7 @@
 </svelte:head>
 
 {#key post.slug}
-    <a class="overflow-hidden w-full " href={`/posts/${post.slug}`}>
+    <a class="overflow-hidden w-full " href={`${post.slug}`}>
         <div class="w-full border-t-4 border-t-primary-100 bg-primary-50/90 dark:bg-primary-700/50">
             <div class="flex ">
                 {#if post.image}
