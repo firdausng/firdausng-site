@@ -8,6 +8,7 @@ export const email = "firdauskamaruddin@hotmail.com"
 export const url = dev ? "http://localhost:5173" : "https://firdausng.com"
 
 export const navigations = [
-    {name: 'Posts', path:'/posts'},
-    {name: 'About', path:'/about'},
+    {name: 'Posts', path:'/posts', featured: true},
+    {name: 'About', path:'/about', featured: true},
+    {name: 'Tags', path:'/tags', featured: false},
 ]

@@ -17,6 +17,8 @@
     function handleNavClick() {
         openMenu = false;
     }
+    
+    
 </script>
 
 <svelte:window {onclick} />
@@ -28,7 +30,7 @@
             </a>
         </div>
         <div class="hidden md:flex justify-center w-full gap-4 items-center">
-            {#each navigations as nav (nav)}
+            {#each navigations.filter(n => n.featured) as nav (nav)}
                 <a href={nav.path} class="block py-2 px-3 rounded bg-transparent {$page.url.pathname.startsWith(nav.path) ? 'text-primary-800 dark:text-primary-200 font-semibold underline underline-offset-4 decoration-primary-600/30': 'text-primary-900 dark:text-primary-50 '}  p-0" aria-current="page">{nav.name}</a>
             {/each}
             <SocialLink />
@@ -45,7 +47,6 @@
             <div class="w-full mx-2 bg-primary-50 dark:bg-primary-900 rounded-lg shadow-lg {openMenu? 'block': 'hidden'} transition-all duration-300 ease-in-out"
                  bind:this={menuRef}
             >
-
                 {#each navigations as nav (nav)}
                     <a href={nav.path}
                        onclick={handleNavClick}

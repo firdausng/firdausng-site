@@ -1,6 +1,5 @@
 ﻿export async function getPosts() {
     let posts: Post[] = []
-
     const paths = import.meta.glob("/src/posts/*.md", { eager: true })
 
     for (const path in paths) {
@@ -26,7 +25,6 @@
 
 export async function getPostTags() {
     let posts: Post[] = []
-
     const paths = import.meta.glob("/src/posts/*.md", { eager: true })
 
     for (const path in paths) {
@@ -45,9 +43,8 @@ export async function getPostTags() {
     posts = posts.sort(
         (first, second) => new Date(second.date).getTime() - new Date(first.date).getTime()
     )
-    const result = groupPostsByCategory(posts)
 
-    return result
+    return groupPostsByCategory(posts)
 }
 
 function groupPostsByCategory(posts: Post[]) {
@@ -59,8 +56,6 @@ function groupPostsByCategory(posts: Post[]) {
             };
         })
     );
-    // console.log(categoryPostPairs)
-
 
     const grouped: { [p: string]: Post[] } = {};
 
