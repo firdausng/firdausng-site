@@ -30,8 +30,8 @@
 </svelte:head>
 
 {#key post.slug}
-    <a class="overflow-hidden w-full max-w-4xl " href={`/posts/${post.slug}`}>
-        <div class="w-full">
+    <a class="overflow-hidden w-full " href={`/posts/${post.slug}`}>
+        <div class="w-full border-t-4 border-t-primary-100 bg-primary-50/90 dark:bg-primary-700/50">
             <div class="flex ">
                 {#if post.image}
                     <div class="max-w-96 bg-cover bg-no-repeat bg-center bg-blend-lighten dark:bg-blend-darken bg-primary-50/90 dark:bg-primary-950/90 border">

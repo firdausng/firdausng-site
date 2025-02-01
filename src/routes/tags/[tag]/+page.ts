@@ -7,5 +7,5 @@ export const load = async ({ params }: ServerLoadEvent) => {
     if(!tag){
         throw error(404, `Could not find ${params.slug}`)
     }
-    return { posts: posts[tag] }
+    return { posts: posts[tag], tag }
 }

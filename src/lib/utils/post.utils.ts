@@ -45,14 +45,7 @@ export async function getPostTags() {
     posts = posts.sort(
         (first, second) => new Date(second.date).getTime() - new Date(first.date).getTime()
     )
-    const abc = posts.flatMap((post) => {
-        const { categories } = post;
-        
-        return {
-            
-        }
-    });
-    const result = groupPostsByCategory(posts);
+    const result = groupPostsByCategory(posts)
 
     return result
 }
@@ -80,6 +73,4 @@ function groupPostsByCategory(posts: Post[]) {
         }
     });
    return grouped;
-    // // Then use Object.groupBy() to group by category
-    // return Object.groupBy(categoryPostPairs, ([category]) => category) as CategoryPosts;
 }

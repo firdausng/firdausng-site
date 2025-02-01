@@ -8,8 +8,9 @@
     <title>{title} - blog</title>
 </svelte:head>
 
-<section class="mb-16">
-    <ul class="flex flex-col items-center gap-8 pt-8">
+<section class="mb-16 container mx-auto">
+    <h1 class="text-center text-4xl font-bold my-8">Posts</h1>
+    <ul class="flex flex-col items-center gap-8">
         {#each data.posts as post}
             <BlogCard {post} />
         {/each}
