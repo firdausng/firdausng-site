@@ -17,6 +17,9 @@ I am going to use Hono Web API with Cloudflare worker for all this example. You 
 ## Add Schema
 I am going to add some schemas for this article as below
 ```ts
+import { sqliteTable, int, text } from 'drizzle-orm/sqlite-core';
+import { sql } from 'drizzle-orm';
+
 export const todo = sqliteTable("todo_definition", {
     id: int().primaryKey({ autoIncrement: true }),
     description  : text().notNull(),

@@ -1,4 +1,5 @@
 # Firdausng Site
+[firdausng.com](https://firdausng.com)
 
 ## Dev
 ```shell
