@@ -1,6 +1,6 @@
 ﻿---
 title: 'Handle Angular module error with Rspack module federation and Nx'
-date: "2025-02-02"
+date: "2025-03-02"
 description: In this article I am going to take a look on how to handle error on Module federation v2 using angular and nx. 🚀
 categories:
   - rspack
