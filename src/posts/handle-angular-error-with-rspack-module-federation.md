@@ -23,39 +23,16 @@ We can use this to provide error component when we failed to load the remote. Fi
 
 ```ts
 // shell/src/app/error.component.ts
-import {Component, OnInit} from '@angular/core';
-import { FederationHost } from '@module-federation/enhanced/runtime';
+import {Component} from '@angular/core';
 
 @Component({
     selector: 'app-error',
     template: `
-        <h1>Error!</h1>
-        @if(data){
-          <pre>
-          {{data}}
-            </pre>
-        }
-
+        <h1>Error Loading remote component!</h1>
     `,
     standalone: true
 })
-export class ErrorComponent implements OnInit{
-    data: string| null = null;
-
-    ngOnInit(): void {
-        // @ts-ignore
-        this.data = JSON.stringify( window.mfeError, null, 2)
-    }
-}
-
-
-type ErrorData = {
-    id: string;
-    error: unknown;
-    options?: any;
-    // from: CallFrom;
-    lifecycle: "beforeRequest" | "beforeLoadShare" | "afterResolve" | "onLoad";
-    origin: FederationHost;
+export class ErrorComponent{
 }
 ```
 Then we can use this component in Module federation such as below
@@ -68,9 +45,7 @@ import { ErrorComponent } from './app/error.component';
 const fallbackPlugin: () => FederationRuntimePlugin = function () {
  return {
    name: 'fallback-plugin',
-
    errorLoadRemote(args) {
-     console.log('errorLoadRemote', args);
      return ErrorComponent;
    },
  };
