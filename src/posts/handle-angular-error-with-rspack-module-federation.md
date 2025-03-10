@@ -13,6 +13,7 @@ featured: true
 ---
 In this article I am going to take a look on how to handle error on Module federation v2 using angular and nx.
 If you have no clue how to set up module federation v2 with rspack and angular, here is a great article written by Manfred Steyer you read about that: [Nx and Angular with Rspack and Module Federation](https://www.angulararchitects.io/en/blog/nx-with-rspack-and-module-federation/).
+> you can scaffold new nx workspace using this command `npx create-nx-workspace@latest --preset=apps` 
 
 > My example is using `19.0.0-alpha.13` for packages `@ng-rsbuild/plugin-angular` and `@ng-rsbuild/plugin-nx` because the latest version of these package seems broken.
 
