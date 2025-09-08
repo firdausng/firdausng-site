@@ -24,3 +24,10 @@ kv_namespaces = [
     { binding = "YOUR_KV_NAMESPACE", id = "0e0cee0606dd4334aeddbe0fd0a27011" }
 ]
 
+[[routes]]
+pattern = "firdausng.com"
+custom_domain = true
+
+[[routes]]
+pattern = "www.firdausng.com"
+custom_domain = true
