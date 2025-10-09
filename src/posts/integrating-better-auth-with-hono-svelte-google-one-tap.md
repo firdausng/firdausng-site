@@ -274,10 +274,10 @@ export const api = new Hono<App.Api>().route('/api', router);
 
 ### 2. Create SvelteKit Endpoint
 
-Connect Hono to SvelteKit in `src/routes/api/[...path]/+server.ts`:
+Connect Hono to SvelteKit in `src/routes/[...path]/+server.ts`:
 
 ```ts
-// src/routes/api/[...path]/+server.ts
+// src/routes/[...path]/+server.ts
 import { api } from '$lib/server/api';
 import type { RequestHandler } from "./$types";
 
