@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:fivebitrate.com)",
+      "WebFetch(domain:duitgee.com)",
+      "WebFetch(domain:geeledger.com)",
+      "WebFetch(domain:bikesynergy.com)"
+    ]
+  }
+}

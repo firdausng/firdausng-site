@@ -1,5 +1,6 @@
-﻿<script lang="ts">import { formatDate } from "$lib/utils";
+<script lang="ts">import { formatDate } from "$lib/utils";
 import { url, title } from "$lib/config";
+import { page } from "$app/state";
 import Comments from "$lib/components/comment.svelte";
 export let data;
 </script>
@@ -30,31 +31,46 @@ export let data;
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
 </svelte:head>
 
-<!--<article class="prose prose-lg prose-slate dark:prose-invert max-w-none prose-a:text-sky-600 prose-a:no-underline dark:prose-a:text-sky-300 mb-16 mx-auto">-->
-<article class="prose prose-lg prose-slate dark:prose-invert mb-16 mx-auto bg-primary-50 dark:bg-primary-950 p-2">
-    <!-- Title -->
-    <hgroup class="flex flex-col items-center">
-        <h1 class="">{data.meta.title}</h1>
-        {#if data.meta.image}
-            <img src={data.meta.image} alt="blog banner" class="rounded-md" />
-        {/if}
-        <p class="text-end text-sm">
-            Published at {formatDate(data.meta.date)}
-        </p>
-    </hgroup>
+<div class="container mx-auto px-4 py-8">
+    <div class="rounded-lg border border-primary-300 dark:border-primary-700 bg-white dark:bg-primary-950/80 overflow-hidden shadow-lg shadow-primary-500/5 max-w-4xl mx-auto">
 
-    <!-- Tags -->
-    <div class="flex flex-wrap gap-4 mb-6">
-        {#each data.meta.categories as category}
-            <a href={`/tags/${category}`} class="chip variant-filled-secondary no-underline"
-            >&num;{category}</a
-            >
-        {/each}
+        <!-- Terminal title bar -->
+        <div class="flex items-center gap-2 px-4 py-2.5 bg-primary-50 dark:bg-primary-900/60 border-b border-primary-200 dark:border-primary-700">
+            <span class="font-mono text-xs sm:text-sm text-primary-600 dark:text-primary-300 truncate"><span class="hidden sm:inline">~/series/</span>{page.params.slug}</span>
+            <span class="ml-auto flex items-center gap-3 text-primary-400 dark:text-primary-500">
+                <span class="text-xs">&#x2500;</span>
+                <span class="text-xs">&#x25A1;</span>
+                <span class="text-sm">&times;</span>
+            </span>
+        </div>
+
+        <!-- Article title -->
+        <h1 class="font-mono text-xl md:text-2xl font-bold text-primary-800 dark:text-primary-200 px-6 md:px-10 pt-6 md:pt-8">{data.meta.title}</h1>
+
+        <!-- Article meta -->
+        <div class="px-6 md:px-10 pt-3 space-y-3">
+            <div class="flex flex-wrap gap-2">
+                {#each data.meta.categories as category}
+                    <a href={`/tags/${category}`}
+                       class="font-mono text-xs px-2 py-0.5 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/40 transition-colors no-underline">
+                        {category}
+                    </a>
+                {/each}
+            </div>
+            <div class="font-mono text-xs text-gray-400 dark:text-gray-500">
+                CREATED <span class="text-gray-600 dark:text-gray-300">{formatDate(data.meta.date)}</span>
+            </div>
+        </div>
+
+        <!-- Article content -->
+        <article class="prose prose-lg prose-slate dark:prose-invert max-w-none px-6 md:px-10 py-6 md:py-8">
+            {#if data.meta.image}
+                <img src={data.meta.image} alt="blog banner" class="rounded-md" />
+            {/if}
+
+            <svelte:component this={data.content} />
+
+            <Comments term={data.meta.title} />
+        </article>
     </div>
-
-    <!-- Post -->
-    <svelte:component this={data.content} />
-    
-    <Comments term={data.meta.title} />
-    
-</article>
+</div>
