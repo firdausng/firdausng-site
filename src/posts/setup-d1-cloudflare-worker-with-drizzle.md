@@ -19,15 +19,26 @@ pnpm create hono@latest
 # Ensure that you select "Cloudflare Workers" as the deployment target
 ```
 
-in the `wrangler.toml` , add D1 database config, ensure that `migrations_dir` set to folder called `migrations`. This will be the migration file created by drizzle later.
-```toml
-[[ d1_databases ]]  
-binding = "DB"  
-database_name = "Hono DB"  
-database_id = "abcdabcd-abcd-abcd-abcd-abcdabcdabcd" 
-migrations_dir = "migrations"
+in the `wrangler.jsonc` , add D1 database config, ensure that `migrations_dir` set to folder called `migrations`. This will be the migration file created by drizzle later.
+```jsonc
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "my-hono-app",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-11-01",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "Hono DB",
+      "database_id": "abcdabcd-abcd-abcd-abcd-abcdabcdabcd",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
 ```
 Note: The `database_name` and `database_id` will come from your Cloudflare dashboard later. For local development, you can use any values for now.
+
+Note: `wrangler.jsonc` is the current default when scaffolding a new worker. If you have an older project using `wrangler.toml`, it still works — the equivalent TOML block is `[[d1_databases]]` with the same keys.
 
 # Update Bindings
 create the typescript type file for the Cloudflare binding.
@@ -115,11 +126,11 @@ Drizzle will create a migration code under migrations folder
 
 to push this migration to the database, we need to run below command
 ```shell
-wrangler d1 migrations apply "Hono DB"
-# `Hono DB` is the value under `db name` that we defined in `wrangler.toml`
+wrangler d1 migrations apply "Hono DB" --local
+# `Hono DB` is the value under `database_name` that we defined in `wrangler.jsonc`
 ```
 
-the command below will actually run on local Miniflare.
+The `--local` flag applies the migration against the local Miniflare SQLite file (under `.wrangler/state/`). It is the default when the flag is omitted, but passing it explicitly avoids confusion with the remote variant below — and means you never accidentally run a migration against production.
 
 # Integrate with Hono
 Now we can update our Hono app to access the `users` table
@@ -201,12 +212,14 @@ binding = "DB"
 database_name = "Hono DB"
 database_id = "abcdabcd-abcd-abcd-abcd-abcdabcdabcd"
 ```
-we can use this information to update our `wrangler.toml` file
+we can use this information to update our `wrangler.jsonc` file
 
-Then we can run below command to update this db
+Then we can run below command to apply migrations to the remote (production) database
 ```
-wrangler d1 migrations apply "Hono DB" --remote true
+wrangler d1 migrations apply "Hono DB" --remote
 ```
+
+Unlike `--local`, `--remote` hits the actual D1 database in your Cloudflare account. Double-check the database name before running.
 
 
 # References
