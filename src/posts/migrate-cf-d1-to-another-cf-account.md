@@ -10,7 +10,7 @@ featured: true
 ---
 This guide covers migrating a D1 database from one cloudflare D1 account to another cloudflare D1 account.
 
-# Steps
+## Steps
 ```shell
 npx wrangler d1 export <database_name> --remote --output=./database.sql
 npx wrangler d1 execute <new_database_name> --remote --file=./database.sql
@@ -26,6 +26,6 @@ Because the `user_role` table have foreign key constraint to the `user` table,th
 
 To fix this, you need to manually update the `user` table on the sql script before the `user_role` table.
 
-# References
+## References
 https://developers.cloudflare.com/d1/best-practices/import-export-data/
 

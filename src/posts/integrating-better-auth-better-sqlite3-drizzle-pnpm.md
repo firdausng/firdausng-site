@@ -14,7 +14,7 @@ featured: true
 so you want to integrate `better-auth` with `better-sqlite3` and `drizzle`? you might face this error
 `Error: Could not locate the bindings file`. 
 
-# Solution
+## Solution
 you need to update your package.json under `pnpm` to this
 ```json
 {
@@ -28,6 +28,6 @@ you need to update your package.json under `pnpm` to this
 ```
 Then delete your node_modules and you good to go
 
-# References
+## References
 https://github.com/WiseLibs/better-sqlite3/issues/146
 

@@ -40,7 +40,7 @@ Note: The `database_name` and `database_id` will come from your Cloudflare dashb
 
 Note: `wrangler.jsonc` is the current default when scaffolding a new worker. If you have an older project using `wrangler.toml`, it still works — the equivalent TOML block is `[[d1_databases]]` with the same keys.
 
-# Update Bindings
+## Update Bindings
 create the typescript type file for the Cloudflare binding.
 ```shell
 wrangler types src/worker.d.ts
@@ -83,7 +83,7 @@ app.get('/', (c) => {
 export default app
 ```
 
-# Drizzle Integration
+## Drizzle Integration
 
 To add drizzle into the created project,  we need to install its dependencies
 ```bash
@@ -132,7 +132,7 @@ wrangler d1 migrations apply "Hono DB" --local
 
 The `--local` flag applies the migration against the local Miniflare SQLite file (under `.wrangler/state/`). It is the default when the flag is omitted, but passing it explicitly avoids confusion with the remote variant below — and means you never accidentally run a migration against production.
 
-# Integrate with Hono
+## Integrate with Hono
 Now we can update our Hono app to access the `users` table
 ```ts
 //src/index.ts
@@ -168,7 +168,7 @@ export default app
 ```
 
 
-# Drizzle Studio
+## Drizzle Studio
 Drizzle Studio is a feature provided by Drizzle to make working with drizzle become much easier.
 this feature usually use a lot during development. However, the we cannot use the current drizzle config because that required us to point to local sqlite file which we dont have (kinda). so we should create a new drizzle config file named `drizzle-dev.config.ts`
 ```ts
@@ -195,7 +195,7 @@ To run Drizzle studio
 pnpm drizzle-kit studio --config=drizzle-dev.config.ts
 ```
 
-# Push to cloudflare
+## Push to cloudflare
 
 first you need to ensure the database is created in cloudflare, to create new D1 db, just run below command
 ```shell
@@ -222,6 +222,6 @@ wrangler d1 migrations apply "Hono DB" --remote
 Unlike `--local`, `--remote` hits the actual D1 database in your Cloudflare account. Double-check the database name before running.
 
 
-# References
+## References
 https://developers.cloudflare.com/workers/wrangler/commands/#d1-migrations-apply
 

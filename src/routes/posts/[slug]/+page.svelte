@@ -77,7 +77,7 @@ export let data;
     </div>
 
         <aside
-            class="hidden xl:block absolute top-0 left-full ml-6 w-48"
+            class="hidden xl:block absolute top-0 bottom-0 left-full ml-6 w-48"
             aria-label="On this page"
         >
             <div class="sticky top-24">

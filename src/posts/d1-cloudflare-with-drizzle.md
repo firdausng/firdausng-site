@@ -70,6 +70,6 @@ todoApp.post('', async(c) => {
 ```
 
 
-# References
+## References
 https://developers.cloudflare.com/workers/wrangler/commands/#d1-migrations-apply
 

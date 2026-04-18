@@ -17,7 +17,7 @@ If you have no clue how to set up module federation v2 with rspack and angular, 
 
 > My example is using `19.0.0-alpha.13` for packages `@ng-rsbuild/plugin-angular` and `@ng-rsbuild/plugin-nx` because the latest version of these package seems broken.
 
-# errorLoadRemote
+## errorLoadRemote
 This is a plugin provided by Module federation v2 to intercept error from loading the remote so that we can handle the error gracefully.
 
 We can use this to provide error component when we failed to load the remote. First we need to have an error component such as below
@@ -56,7 +56,7 @@ const fallbackPlugin: () => FederationRuntimePlugin = function () {
 
 
 
-# References
+## References
 - https://www.angulararchitects.io/en/blog/nx-with-rspack-and-module-federation/
 - https://module-federation.io/plugin/dev/index.html
 

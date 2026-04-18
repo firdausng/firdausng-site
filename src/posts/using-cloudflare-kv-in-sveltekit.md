@@ -13,9 +13,9 @@ published: true
 ---
 This guide will walk you through integrating Cloudflare KV with your SvelteKit application, from initial setup to advanced usage patterns. 🚀
 
-# Initial Setup
+## Initial Setup
 
-## Configure SvelteKit for Cloudflare
+### Configure SvelteKit for Cloudflare
 First, ensure your SvelteKit project is configured for Cloudflare Pages. Update your `vite.config.js`:
 ```ts
 import { sveltekit } from '@sveltejs/kit/vite';
@@ -39,7 +39,7 @@ const config = {
 export default config;
 ```
 
-## Create and configure Cloudflare KV namespace
+### Create and configure Cloudflare KV namespace
 In order to use cloudflare worker, it is best practise to install cloudflare `wrangler` cli.
 
 You can do that by running this command
@@ -70,7 +70,7 @@ declare global {
 }
 ```
 
-## Point KV namespace in cloudflare dashboard
+### Point KV namespace in cloudflare dashboard
 Once you have deployed to cloudflare, you need to ensure cloudflare know which KV that you want to target
 You need to navigate to your svelte project in cloudflare 
 navigate to `Settings > Bindings > + Add > KV namespace`
@@ -82,9 +82,9 @@ navigate to `Settings > Bindings > + Add > KV namespace`
 
 
 
-# Basic Operations
+## Basic Operations
 
-## 1. Server-Side Routes (Hooks)
+### 1. Server-Side Routes (Hooks)
 
 Create a `src/hooks.server.ts` file to handle KV operations:
 
@@ -104,7 +104,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 };
 ```
 
-## 2. Server Route Implementation
+### 2. Server Route Implementation
 
 Create server routes in `src/routes/api/[resource]/+server.ts`:
 
@@ -139,7 +139,7 @@ export const GET: RequestHandler = async ({ url, platform }) => {
 };
 ```
 
-## 3. Page Server Implementation
+### 3. Page Server Implementation
 
 Create a `+page.server.ts` file for server-side data loading:
 
