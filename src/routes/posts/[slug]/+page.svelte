@@ -4,6 +4,7 @@ import { page } from "$app/state";
 import Comments from "$lib/components/comment.svelte";
 import TableOfContents from "$lib/components/tableOfContents.svelte";
 import AppCTA from "$lib/components/appCta.svelte";
+import { copyCode } from "$lib/actions/copyCode";
 export let data;
 </script>
 
@@ -72,7 +73,7 @@ export let data;
         </div>
 
         <!-- Article content -->
-        <article class="prose prose-lg prose-slate dark:prose-invert max-w-none px-6 md:px-10 py-6 md:py-8">
+        <article use:copyCode class="prose prose-lg prose-slate dark:prose-invert max-w-none px-6 md:px-10 py-6 md:py-8">
             {#if data.meta.image}
                 <img src={data.meta.image} alt="blog banner" class="rounded-md" />
             {/if}
