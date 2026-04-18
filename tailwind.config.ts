@@ -13,6 +13,8 @@ export default {
         DEFAULT: {
           css: {
             maxWidth: '100ch', // add required value here
+            'code::before': { content: 'none' },
+            'code::after': { content: 'none' },
           }
         }
       },

@@ -11,3 +11,22 @@ html {
 		scroll-behavior: auto;
 	}
 }
+
+.heading-anchor {
+	opacity: 0;
+	margin-left: 0.4rem;
+	text-decoration: none;
+	color: rgb(148 163 184);
+	font-weight: normal;
+	transition: opacity 0.15s ease-out;
+}
+
+.heading-anchor:hover {
+	color: rgb(100 116 139);
+}
+
+h2:hover .heading-anchor,
+h3:hover .heading-anchor,
+.heading-anchor:focus-visible {
+	opacity: 1;
+}

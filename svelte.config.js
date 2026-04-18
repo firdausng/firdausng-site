@@ -5,7 +5,10 @@ import { bundledLanguages, getSingletonHighlighter } from "shiki"
 import remarkUnwrapImages from "rehype-unwrap-images"
 import remarkToc from "remark-toc"
 import rehypeSlug from "rehype-slug"
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypeExternalLinks from "rehype-external-links"
 import { remarkExtractHeadings } from "./src/lib/plugins/remark-extract-headings.js"
+import { remarkReadingTime } from "./src/lib/plugins/remark-reading-time.js"
 
 
 const theme = "one-dark-pro";
@@ -23,8 +26,16 @@ const mdsvexOptions = {
 			return `{@html \`${html}\` }`
 		},
 	},
-	remarkPlugins: [remarkUnwrapImages, [remarkToc, { tight: true }], remarkExtractHeadings],
-	rehypePlugins: [rehypeSlug],
+	remarkPlugins: [remarkUnwrapImages, [remarkToc, { tight: true }], remarkExtractHeadings, remarkReadingTime],
+	rehypePlugins: [
+		rehypeSlug,
+		[rehypeAutolinkHeadings, {
+			behavior: 'append',
+			properties: { class: 'heading-anchor', 'aria-label': 'Permalink' },
+			content: { type: 'text', value: ' #' }
+		}],
+		[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+	],
 }
 
 

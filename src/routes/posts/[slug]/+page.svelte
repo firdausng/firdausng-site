@@ -60,8 +60,14 @@ export let data;
                     </a>
                 {/each}
             </div>
-            <div class="font-mono text-xs text-gray-400 dark:text-gray-500">
-                CREATED <span class="text-gray-600 dark:text-gray-300">{formatDate(data.meta.date)}</span>
+            <div class="font-mono text-xs text-gray-400 dark:text-gray-500 flex flex-wrap gap-x-4 gap-y-1">
+                <span>CREATED <span class="text-gray-600 dark:text-gray-300">{formatDate(data.meta.date)}</span></span>
+                {#if data.meta.updated}
+                    <span>UPDATED <span class="text-gray-600 dark:text-gray-300">{formatDate(data.meta.updated)}</span></span>
+                {/if}
+                {#if data.meta.readingTime}
+                    <span>~<span class="text-gray-600 dark:text-gray-300">{data.meta.readingTime}</span> min read</span>
+                {/if}
             </div>
         </div>
 
