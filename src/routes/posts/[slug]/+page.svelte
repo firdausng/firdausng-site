@@ -5,6 +5,7 @@ import Comments from "$lib/components/comment.svelte";
 import TableOfContents from "$lib/components/tableOfContents.svelte";
 import AppCTA from "$lib/components/appCta.svelte";
 import SeriesNav from "$lib/components/seriesNav.svelte";
+import RelatedPosts from "$lib/components/relatedPosts.svelte";
 import { copyCode } from "$lib/actions/copyCode";
 export let data;
 
@@ -112,6 +113,10 @@ $: jsonLd = (() => {
 
             {#if data.series}
                 <SeriesNav series={data.series} variant="pager" />
+            {/if}
+
+            {#if data.related && data.related.length}
+                <RelatedPosts posts={data.related} />
             {/if}
 
             {#if data.meta.appCta}
