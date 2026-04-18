@@ -4,8 +4,33 @@ import { page } from "$app/state";
 import Comments from "$lib/components/comment.svelte";
 import TableOfContents from "$lib/components/tableOfContents.svelte";
 import AppCTA from "$lib/components/appCta.svelte";
+import SeriesNav from "$lib/components/seriesNav.svelte";
 import { copyCode } from "$lib/actions/copyCode";
 export let data;
+
+const AUTHOR = { '@type': 'Person', name: 'Firdaus Kamaruddin', url };
+
+$: jsonLd = (() => {
+    const meta = data.meta;
+    const schema: Record<string, unknown> = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: meta.title,
+        description: meta.description,
+        datePublished: meta.date,
+        dateModified: meta.updated ?? meta.date,
+        author: AUTHOR,
+        publisher: AUTHOR,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': `${url}${data.url}` }
+    };
+    if (meta.image) {
+        schema.image = meta.image.startsWith('http') ? meta.image : `${url}${meta.image}`;
+    }
+    if (Array.isArray(meta.categories) && meta.categories.length) {
+        schema.keywords = meta.categories.join(', ');
+    }
+    return JSON.stringify(schema).replace(/</g, '\\u003c');
+})();
 </script>
 
 <!-- SEO -->
@@ -32,6 +57,8 @@ export let data;
 
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+
+    {@html `<script type="application/ld+json">${jsonLd}<\/script>`}
 </svelte:head>
 
 <div class="container mx-auto px-4 py-8">
@@ -70,6 +97,9 @@ export let data;
                     <span>~<span class="text-gray-600 dark:text-gray-300">{data.meta.readingTime}</span> min read</span>
                 {/if}
             </div>
+            {#if data.series}
+                <SeriesNav series={data.series} variant="banner" />
+            {/if}
         </div>
 
         <!-- Article content -->
@@ -79,6 +109,10 @@ export let data;
             {/if}
 
             <svelte:component this={data.content} />
+
+            {#if data.series}
+                <SeriesNav series={data.series} variant="pager" />
+            {/if}
 
             {#if data.meta.appCta}
                 <AppCTA app={data.meta.appCta} />

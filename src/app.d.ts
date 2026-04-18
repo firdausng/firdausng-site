@@ -26,9 +26,15 @@ interface Post {
 	description: string
 	image?: string
 	date: string
+	updated?: string
 	categories?: string[]
 	published: boolean
 	featured?: boolean
+	series?: string
+	order?: number
+	appCta?: 'geeledger' | 'duitgee' | 'bikesynergy'
+	readingTime?: number
+	headings?: { depth: number; id: string; text: string }[]
 }
 
 interface CategoryPosts {

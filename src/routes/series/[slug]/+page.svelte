@@ -70,6 +70,23 @@ export let data;
 
             <svelte:component this={data.content} />
 
+            {#if data.parts && data.parts.length}
+                <section class="not-prose mt-8">
+                    <h2 class="font-mono text-sm uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-3">Posts in this series</h2>
+                    <ol class="space-y-2 font-mono text-sm">
+                        {#each data.parts as part, i (part.slug)}
+                            <li class="flex gap-3">
+                                <span class="text-gray-400 dark:text-gray-500 tabular-nums">{i + 1}.</span>
+                                <a
+                                    href={part.slug}
+                                    class="text-primary-700 dark:text-primary-200 hover:underline underline-offset-2"
+                                >{part.title}</a>
+                            </li>
+                        {/each}
+                    </ol>
+                </section>
+            {/if}
+
             <Comments term={data.meta.title} />
         </article>
     </div>

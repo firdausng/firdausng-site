@@ -38,7 +38,7 @@
 		{#each headings as h (h.id)}
 			<a
 				href={`#${h.id}`}
-				class="block transition-colors {active === h.id
+				class="block transition-colors rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-primary-950 {active === h.id
 					? 'text-primary-700 dark:text-primary-200'
 					: 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'}"
 				style:padding-left={`${(h.depth - 2) * 0.75}rem`}

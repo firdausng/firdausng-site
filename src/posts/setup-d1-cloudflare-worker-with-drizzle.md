@@ -1,6 +1,7 @@
 ﻿---
 title: 'Setting up D1 Database with Drizzle in a Hono Cloudflare Worker App'
 date: "2025-01-12"
+updated: "2026-04-18"
 description: This guide covers configuring a D1 database using Drizzle in a Hono app deployed using Cloudflare Workers.. 🚀
 categories:
   - cloudflare worker
@@ -10,6 +11,8 @@ categories:
 author: Me
 published: true
 featured: true
+series: building-a-task-manager-with-hono-drizzle-and-cloudflare-d1
+order: 10
 ---
 This guide covers configuring a D1 database using Drizzle in a Hono app deployed using Cloudflare Workers.
 
