@@ -123,7 +123,7 @@ $: jsonLd = (() => {
                 <AppCTA app={data.meta.appCta} />
             {/if}
 
-            <Comments term={data.meta.title} />
+            <Comments />
         </article>
     </div>
 

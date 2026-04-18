@@ -87,7 +87,7 @@ export let data;
                 </section>
             {/if}
 
-            <Comments term={data.meta.title} />
+            <Comments />
         </article>
     </div>
 </div>
