@@ -3,6 +3,7 @@ import { url, title } from "$lib/config";
 import { page } from "$app/state";
 import Comments from "$lib/components/comment.svelte";
 import TableOfContents from "$lib/components/tableOfContents.svelte";
+import AppCTA from "$lib/components/appCta.svelte";
 export let data;
 </script>
 
@@ -71,6 +72,10 @@ export let data;
             {/if}
 
             <svelte:component this={data.content} />
+
+            {#if data.meta.appCta}
+                <AppCTA app={data.meta.appCta} />
+            {/if}
 
             <Comments term={data.meta.title} />
         </article>

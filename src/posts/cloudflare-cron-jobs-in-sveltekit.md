@@ -9,13 +9,20 @@ categories:
 author: Me
 published: true
 featured: true
+appCta: geeledger
 ---
 
 SvelteKit's Cloudflare adapter (`@sveltejs/adapter-cloudflare`) does not natively support the `scheduled` event handler. This article documents a workaround to add cron job support to any SvelteKit app deployed on Cloudflare Workers.
 
 ## Background
 
-Cloudflare Workers support a `scheduled` event handler for cron triggers. SvelteKit's `@sveltejs/adapter-cloudflare` generates `_worker.js` with only a `fetch` handler — there's no built-in way to export a `scheduled` handler.
+While building [Gee Ledger](https://geeledger.com), I needed cron support for **recurring transactions** — invoices and expenses that auto-generate on a schedule. Think monthly rent, a client retainer billed quarterly, or an annual software renewal. The user defines a template once (amount, line items, party, category) along with a frequency (`daily` / `weekly` / `monthly` / `yearly`), an interval count, a start date, and an optional end date. Every night a cron sweep runs:
+
+1. Find every `active` template whose `nextOccurrence` is on or before today.
+2. For each one, materialize a real transaction — copy the line items from the template's blueprint, attach the income/expense aggregate, write a new row.
+3. Compute the next occurrence date and either advance `nextOccurrence` or, if we've passed the end date, mark the template `completed`.
+
+That's the feature that needed Cloudflare's `scheduled` event handler. But SvelteKit's `@sveltejs/adapter-cloudflare` doesn't natively support it — the adapter generates `_worker.js` with only a `fetch` handler, so there's no built-in way to export a `scheduled` handler.
 
 This was raised in [sveltejs/kit#4841](https://github.com/sveltejs/kit/issues/4841). Rich Harris stated that native support for scheduled events is outside the adapter's scope, and the issue was closed with no plans to add it. The community established two workarounds:
 
