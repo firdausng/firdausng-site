@@ -2,6 +2,7 @@
 import { url, title } from "$lib/config";
 import { page } from "$app/state";
 import Comments from "$lib/components/comment.svelte";
+import TableOfContents from "$lib/components/tableOfContents.svelte";
 export let data;
 </script>
 
@@ -32,7 +33,8 @@ export let data;
 </svelte:head>
 
 <div class="container mx-auto px-4 py-8">
-    <div class="rounded-lg border border-primary-300 dark:border-primary-700 bg-white dark:bg-primary-950/80 overflow-hidden shadow-lg shadow-primary-500/5 max-w-4xl mx-auto">
+    <div class="relative max-w-4xl mx-auto">
+    <div class="rounded-lg border border-primary-300 dark:border-primary-700 bg-white dark:bg-primary-950/80 overflow-hidden shadow-lg shadow-primary-500/5">
 
         <!-- Terminal title bar -->
         <div class="flex items-center gap-2 px-4 py-2.5 bg-primary-50 dark:bg-primary-900/60 border-b border-primary-200 dark:border-primary-700">
@@ -72,5 +74,15 @@ export let data;
 
             <Comments term={data.meta.title} />
         </article>
+    </div>
+
+        <aside
+            class="hidden xl:block absolute top-0 left-full ml-6 w-48"
+            aria-label="On this page"
+        >
+            <div class="sticky top-24">
+                <TableOfContents headings={data.meta.headings ?? []} />
+            </div>
+        </aside>
     </div>
 </div>

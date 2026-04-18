@@ -4,7 +4,10 @@
       "WebFetch(domain:fivebitrate.com)",
       "WebFetch(domain:duitgee.com)",
       "WebFetch(domain:geeledger.com)",
-      "WebFetch(domain:bikesynergy.com)"
+      "WebFetch(domain:bikesynergy.com)",
+      "Bash(pnpm add *)",
+      "Bash(pnpm check *)",
+      "Bash(pnpm build *)"
     ]
   }
 }

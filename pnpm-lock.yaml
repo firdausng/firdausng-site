@@ -66,9 +66,15 @@ importers:
       eslint-plugin-svelte:
         specifier: ^2.36.0
         version: 2.46.1(eslint@9.16.0(jiti@1.21.6))(svelte@5.53.7)
+      github-slugger:
+        specifier: ^2.0.0
+        version: 2.0.0
       globals:
         specifier: ^15.0.0
         version: 15.12.0
+      mdast-util-to-string:
+        specifier: ^4.0.0
+        version: 4.0.0
       nx:
         specifier: 20.1.4
         version: 20.1.4
@@ -87,6 +93,9 @@ importers:
       typescript-eslint:
         specifier: ^8.0.0
         version: 8.16.0(eslint@9.16.0(jiti@1.21.6))(typescript@5.7.2)
+      unist-util-visit:
+        specifier: ^5.1.0
+        version: 5.1.0
       vite:
         specifier: ^7.2.6
         version: 7.3.1(jiti@1.21.6)(yaml@2.6.1)
@@ -2687,8 +2696,8 @@ packages:
   unist-util-visit-parents@6.0.1:
     resolution: {integrity: sha512-L/PqWzfTP9lzzEa6CKs0k2nARxTdZduw3zyh8d2NVBnsyvHjSX4TWse388YrrQKbvI8w20fGjGlhgT96WwKykw==}
 
-  unist-util-visit@5.0.0:
-    resolution: {integrity: sha512-MR04uvD+07cwl/yhVuVWAtw+3GOR/knlL55Nd/wAdblk27GCVt3lqpTivy/tkJcZoNPzTwS1Y+KMojlLDhoTzg==}
+  unist-util-visit@5.1.0:
+    resolution: {integrity: sha512-m+vIdyeCOpdr/QeQCu2EzxX/ohgS8KbnPDgFni4dQsfSCtpz8UqDyY5GjRru8PDKuYn7Fq19j1CQ+nJSsGKOzg==}
 
   update-browserslist-db@1.1.1:
     resolution: {integrity: sha512-R8UzCaa9Az+38REPiJ1tXlImTJXlVfgHZsglwBD/k6nj76ctsH1E3q4doGrukiLQd3sGQYu56r5+lo5r94l29A==}
@@ -4593,7 +4602,7 @@ snapshots:
       micromark-util-sanitize-uri: 2.0.1
       trim-lines: 3.0.1
       unist-util-position: 5.0.0
-      unist-util-visit: 5.0.0
+      unist-util-visit: 5.1.0
       vfile: 6.0.3
 
   mdast-util-to-string@4.0.0:
@@ -4608,7 +4617,7 @@ snapshots:
       github-slugger: 2.0.0
       mdast-util-to-string: 4.0.0
       unist-util-is: 6.0.0
-      unist-util-visit: 5.0.0
+      unist-util-visit: 5.1.0
 
   mdsvex@0.12.3(svelte@5.53.7):
     dependencies:
@@ -4975,14 +4984,14 @@ snapshots:
       github-slugger: 2.0.0
       hast-util-heading-rank: 3.0.0
       hast-util-to-string: 3.0.1
-      unist-util-visit: 5.0.0
+      unist-util-visit: 5.1.0
 
   rehype-unwrap-images@1.0.0:
     dependencies:
       '@types/hast': 3.0.4
       hast-util-interactive: 3.0.0
       hast-util-whitespace: 3.0.0
-      unist-util-visit: 5.0.0
+      unist-util-visit: 5.1.0
 
   remark-toc@9.0.0:
     dependencies:
@@ -5367,7 +5376,7 @@ snapshots:
       '@types/unist': 3.0.3
       unist-util-is: 6.0.0
 
-  unist-util-visit@5.0.0:
+  unist-util-visit@5.1.0:
     dependencies:
       '@types/unist': 3.0.3
       unist-util-is: 6.0.0

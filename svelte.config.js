@@ -5,6 +5,7 @@ import { bundledLanguages, getSingletonHighlighter } from "shiki"
 import remarkUnwrapImages from "rehype-unwrap-images"
 import remarkToc from "remark-toc"
 import rehypeSlug from "rehype-slug"
+import { remarkExtractHeadings } from "./src/lib/plugins/remark-extract-headings.js"
 
 
 const theme = "one-dark-pro";
@@ -22,7 +23,7 @@ const mdsvexOptions = {
 			return `{@html \`${html}\` }`
 		},
 	},
-	remarkPlugins: [remarkUnwrapImages, [remarkToc, { tight: true }]],
+	remarkPlugins: [remarkUnwrapImages, [remarkToc, { tight: true }], remarkExtractHeadings],
 	rehypePlugins: [rehypeSlug],
 }
 
