@@ -41,9 +41,7 @@ Append a `scheduled` handler to the generated `_worker.js` after the SvelteKit b
 
 The scheduled handler. Receives `event`, `env` (all Cloudflare bindings), and `ctx` (execution context).
 
-```js
-// cron/job.js
-
+```js file=cron/job.js
 /**
  * @param {import("@cloudflare/workers-types").ScheduledEvent} event
  * @param {Env} env
@@ -68,8 +66,7 @@ worker_default.scheduled = async (event, env, ctx) => {
 
 Post-build script that appends `job.js` to the generated worker.
 
-```js
-// cron/append.js
+```js file=cron/append.js
 import { appendFile, readFile } from 'fs/promises';
 
 const file = await readFile('cron/job.js', 'utf8');

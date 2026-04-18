@@ -70,3 +70,43 @@ pre:hover .copy-code-btn,
 	background: rgba(134, 239, 172, 0.08);
 	opacity: 1;
 }
+
+.code-block {
+	margin: 1.25em 0;
+	border-radius: 0.375rem;
+	overflow: hidden;
+	background-color: #282c34;
+}
+
+.code-block-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.4rem 1rem;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+	font-size: 0.7rem;
+	line-height: 1;
+	background-color: #21252b;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.code-block-filename {
+	color: rgba(255, 255, 255, 0.85);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.code-block-lang {
+	color: rgba(255, 255, 255, 0.4);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-size: 0.65rem;
+	flex-shrink: 0;
+}
+
+.code-block > pre {
+	margin: 0 !important;
+	border-radius: 0 !important;
+}
