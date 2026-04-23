@@ -1,9 +1,11 @@
 ﻿---
-title: Using Github api to list down Github pull request that contained sensitive data
-description: If you’ve accidentally committed sensitive data (like passwords or SSH keys) to a Git repository, you can remove it from the git history1. However, if your repository is hosted on GitHub, the data won’t be removed from the associated pull requests2. To streamline this process, an automated TypeScript script is proposed. It identifies sensitive data in pull requests, retrieves repository data using the GitHub API, and generates an output.csv file with relevant information. This script simplifies maintaining clean repositories. 🚀
-date: '2024-4-08'
+title: 'Finding GitHub pull requests that leaked sensitive data — a script'
+description: If you've committed a secret to a repo, rewriting git history with BFG doesn't clean the pull requests — GitHub caches them separately. This is a TypeScript script that walks every PR, scans every commit's patch for secret patterns, and writes a CSV you can hand to GitHub support.
+date: '2024-04-08'
+updated: '2026-04-22'
 categories:
   - git
+  - github
 image: /images/Managing-Multiple-Git-SSH-Keys-for-Git-on-Windows.jpg
 author: Me
 published: true

@@ -38,6 +38,7 @@ export const load = async ({ params }: ServerLoadEvent) => {
             meta,
             series,
             related,
+            url: currentSlug,
         }
     } catch (e) {
         throw error(404, `Could not find ${params.slug}`)

@@ -1,7 +1,7 @@
 ---
 title: "Fixing Giscus comments: why Announcements is a trap"
 date: "2026-04-19"
-description: If you're manually creating a GitHub Discussion for every blog post, your Giscus category is probably the problem. The fix is four small config decisions — plus one migration footgun nobody warns you about. 🚀
+description: If you're manually creating a GitHub Discussion for every blog post, your Giscus category is probably the problem. The fix is four small config decisions — plus one migration footgun nobody warns you about.
 categories:
   - giscus
   - sveltekit

@@ -1,11 +1,12 @@
 ﻿---
-title: 'Deploy Sveltekit to cloudflare'
+title: 'Deploy SvelteKit to Cloudflare Pages'
 date: "2024-12-22"
-description: SvelteKit is a powerful framework for building web applications, and Cloudflare Pages provides an excellent platform for hosting them. This guide will walk you through the process of deploying your SvelteKit application to Cloudflare Pages, ensuring optimal performance and reliability. 🚀
+updated: "2026-04-22"
+description: A straight walkthrough for deploying a SvelteKit app to Cloudflare Pages — installing the Cloudflare adapter, wiring a Git repo to a Pages project, and configuring the build.
 categories:
   - sveltekit
   - svelte
-  - cloudflare
+  - cloudflare workers
 image: /images/sveltekit-cloudflare.png
 author: Me
 published: true
@@ -111,19 +112,18 @@ Click "Save and Deploy" to start the deployment process. Cloudflare Pages will:
 4. Deploy to their global network
 
 
-## Conclusion
+## What you get out of the box
 
-Deploying SvelteKit to Cloudflare Pages provides a robust, performant hosting solution with global CDN benefits. By following this guide, you've learned how to:
-- Configure SvelteKit for Cloudflare deployment
-- Set up and deploy your application
-- Handle post-deployment tasks
-- Troubleshoot common issues
+On the first successful deploy, Cloudflare Pages gives you:
 
-Remember to regularly update your dependencies and stay current with both SvelteKit and Cloudflare Pages features to ensure optimal performance and security.
+- A `*.pages.dev` preview URL on every commit to the connected branch.
+- Automatic preview deploys on every pull request.
+- Global CDN distribution — no region to pick.
+- SSR running on Cloudflare Workers, which is what `adapter-cloudflare` targets.
 
-## Additional Resources
+If you need D1 database access, KV, R2, or cron triggers from the same app, those are bindings you attach to the Pages project in **Settings → Functions → Bindings**. The adapter surfaces them as `platform.env.<BINDING>` inside your SvelteKit load and server routes — see [Using Cloudflare KV with SvelteKit](/posts/using-cloudflare-kv-in-sveltekit) and [Setting up D1 with Drizzle in Hono](/posts/setup-d1-cloudflare-worker-with-drizzle) for the two I reach for most.
 
-- [SvelteKit Documentation](https://kit.svelte.dev/)
-- [Cloudflare Pages Documentation](https://developers.cloudflare.com/pages/)
-- [Adapter-Cloudflare Documentation](https://github.com/sveltejs/kit/tree/master/packages/adapter-cloudflare)
-- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers/)
+## References
+
+- [SvelteKit Cloudflare adapter](https://kit.svelte.dev/docs/adapter-cloudflare)
+- [Cloudflare Pages documentation](https://developers.cloudflare.com/pages/)

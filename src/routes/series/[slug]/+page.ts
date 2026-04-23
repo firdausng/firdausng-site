@@ -11,6 +11,7 @@ export const load = async ({ params }: ServerLoadEvent) => {
             content: post.default,
             meta: post.metadata,
             parts,
+            url: `/series/${params.slug}`,
         }
     } catch (e) {
         throw error(404, `Could not find ${params.slug}`)

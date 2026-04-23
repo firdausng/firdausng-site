@@ -11,6 +11,10 @@ export let data;
 
 const AUTHOR = { '@type': 'Person', name: 'Firdaus Kamaruddin', url };
 
+$: absoluteImage = data.meta.image
+    ? (data.meta.image.startsWith('http') ? data.meta.image : `${url}${data.meta.image}`)
+    : null;
+
 $: jsonLd = (() => {
     const meta = data.meta;
     const schema: Record<string, unknown> = {
@@ -32,6 +36,32 @@ $: jsonLd = (() => {
     }
     return JSON.stringify(schema).replace(/</g, '\\u003c');
 })();
+
+$: breadcrumbLd = (() => {
+    const items: Array<Record<string, unknown>> = [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: url },
+        { '@type': 'ListItem', position: 2, name: 'Posts', item: `${url}/posts` },
+    ];
+    if (data.series) {
+        items.push({
+            '@type': 'ListItem',
+            position: items.length + 1,
+            name: data.series.title,
+            item: `${url}${data.series.url}`,
+        });
+    }
+    items.push({
+        '@type': 'ListItem',
+        position: items.length + 1,
+        name: data.meta.title,
+        item: `${url}${data.url}`,
+    });
+    return JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: items,
+    }).replace(/</g, '\\u003c');
+})();
 </script>
 
 <!-- SEO -->
@@ -46,20 +76,25 @@ $: jsonLd = (() => {
     <meta property="og:title" content={data.meta.title} />
     <meta property="og:description" content={data.meta.description} />
     <meta property="og:site_name" content={title} />
-    <meta property="og:image" content={data.meta.image} />
+    {#if absoluteImage}
+        <meta property="og:image" content={absoluteImage} />
+    {/if}
 
     <meta name="twitter:site" content="@firdausng_byte" />
     <meta name="twitter:creator" content="@firdausng_byte" />
     <meta name="twitter:title" content={data.meta.title} />
     <meta name="twitter:description" content={data.meta.description} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image:src" content={data.meta.image} />
+    <meta name="twitter:card" content={absoluteImage ? 'summary_large_image' : 'summary'} />
+    {#if absoluteImage}
+        <meta name="twitter:image:src" content={absoluteImage} />
+    {/if}
     <meta name="twitter:widgets:new-embed-design" content="on" />
 
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
 
     {@html `<script type="application/ld+json">${jsonLd}<\/script>`}
+    {@html `<script type="application/ld+json">${breadcrumbLd}<\/script>`}
 </svelte:head>
 
 <div class="container mx-auto px-4 py-8">
@@ -90,6 +125,7 @@ $: jsonLd = (() => {
                 {/each}
             </div>
             <div class="font-mono text-xs text-gray-400 dark:text-gray-500 flex flex-wrap gap-x-4 gap-y-1">
+                <span>BY <a href="/about" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 no-underline" rel="author">Firdaus Kamaruddin</a></span>
                 <span>CREATED <span class="text-gray-600 dark:text-gray-300">{formatDate(data.meta.date)}</span></span>
                 {#if data.meta.updated}
                     <span>UPDATED <span class="text-gray-600 dark:text-gray-300">{formatDate(data.meta.updated)}</span></span>

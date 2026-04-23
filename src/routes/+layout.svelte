@@ -25,6 +25,7 @@
 
 <svelte:head>
     <title>{title}</title>
+    <link rel="alternate" type="application/rss+xml" title={`${title} — RSS`} href="/rss.xml" />
 </svelte:head>
 
 <div class="flex flex-col justify-between h-screen">

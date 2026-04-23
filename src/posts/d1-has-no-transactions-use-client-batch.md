@@ -1,7 +1,7 @@
 ---
 title: 'D1 has no transactions — using client.batch() for multi-step writes'
 date: "2026-04-19"
-description: Cloudflare D1 has no BEGIN/COMMIT. The official answer is client.batch(), but it has four subtle rules worth writing down. Worked example from DuitGee's fund-transfer handler. 🚀
+description: Cloudflare D1 has no BEGIN/COMMIT. The official answer is client.batch(), but it has four subtle rules worth writing down. Worked example from DuitGee's fund-transfer handler.
 categories:
   - cloudflare D1
   - drizzle
@@ -12,6 +12,8 @@ author: Me
 published: true
 featured: true
 appCta: duitgee
+series: hono-drizzle-cloudflare-d1-practical-recipes
+order: 30
 ---
 
 While building [DuitGee](https://duitgee.com), a fund-based expense tracker, I hit the first real Cloudflare D1 gotcha: transferring money between two funds is three inserts plus two balance updates that must land atomically — but D1 doesn't support `BEGIN TRANSACTION`. The official answer is `client.batch([...])`, and it has enough subtle rules that they deserve being written down in one place.

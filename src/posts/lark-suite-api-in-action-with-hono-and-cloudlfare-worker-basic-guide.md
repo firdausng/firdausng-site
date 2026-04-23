@@ -1,19 +1,17 @@
 ﻿---
-title: 'Lark Suite API in Action with Hono and Cloudlfare worker: Basic Guide'
+title: 'Lark Suite API with Hono on Cloudflare Workers — a basic guide'
 date: "2025-01-31"
-description: Lark Suite is a application developed by ByteDance as 1 stop solution for all business need. Lark Suite do provide a very generous free tier with many feature that can compete with the like of Google Workspace, Microsoft 365 or Zoho. Lark Suite also provide a comprehensive API that can be used to integrated with any site. In this guide, we will take a look on how to set up Lark API and integrate it with Sveltekit. 🚀
+updated: "2026-04-22"
+description: Lark Suite (ByteDance's Google-Workspace competitor) has a capable API and a generous free tier. This guide walks through setting up a custom Lark app, authenticating with a tenant access token, and hitting the Sheets/Bitable API from a Hono worker on Cloudflare.
 categories:
   - lark suite
-  - cloudflare worker
-  - Hono
+  - cloudflare workers
+  - hono
 author: Me
 published: true
 featured: true
 ---
-Lark Suite is a application developed by ByteDance as 1 stop solution for all business need. 
-Lark Suite do provide a very generous free tier with many feature that can compete with the like of Google Workspace, Microsoft 365 or Zoho.
-Lark Suite also provide a comprehensive API that can be used to integrated with any site.
-In this guide, we will take a look on how to set up Lark API and integrate it with any app
+Lark Suite is ByteDance's all-in-one business suite — email, chat, docs, sheets, and a base (Bitable) — with a generous free tier that competes with Google Workspace and Microsoft 365. It also ships a comprehensive REST API that you can call from any server-side stack. This guide walks through setting up a custom Lark app, authenticating with a tenant access token, and calling the Bitable API from a Hono worker running on Cloudflare.
 
 ## Prerequisites
 
@@ -253,11 +251,11 @@ You can get more information from this doc [List Table](https://open.larksuite.c
 You also can get the appToken from the url when you view the Lark Sheet, for example from `https://abc.sg.larksuite.com/base/asalskakamkda`
 
 
-## Conclusion
-This guide will help you to use LarkSuite API to your application. I am using Hono as example but this can be applied in any web framework.
-Lark Suite is a very nice tool because it has many features. Some of the interesting feature for small business to have quite a robust app with rich features like email, Sheet.
+## Wrap-up
 
+The pattern generalises: Lark's tenant access token is short-lived and app-scoped, so caching it in KV (keyed by app ID, TTL tuned to a few minutes below the reported `expire`) is the natural shape for any Cloudflare-based Lark integration. Hono is used here but the middleware is a thin wrapper — the same approach drops into any web framework that supports per-request context.
 
-## Additional Resources
-- https://open.larksuite.com
-- https://open.larksuite.com/document/home/index
+## Additional resources
+
+- [Lark Open Platform](https://open.larksuite.com)
+- [Lark API documentation](https://open.larksuite.com/document/home/index)

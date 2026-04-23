@@ -1,17 +1,18 @@
 ﻿---
-title: 'Using Cloudflare KV with SvelteKit: A Complete Guide'
+title: 'Using Cloudflare KV with SvelteKit'
 date: "2024-12-23"
-description: This guide will walk you through integrating Cloudflare KV with your SvelteKit application, from initial setup to advanced usage patterns. 🚀
+updated: "2026-04-22"
+description: How to wire a Cloudflare KV namespace into a SvelteKit app deployed on Cloudflare — creating the namespace, binding it in wrangler, exposing it through hooks, and the basic read/write patterns in server routes.
 categories:
   - sveltekit
   - svelte
-  - cloudflare
+  - cloudflare workers
   - cloudflare kv
 image: /images/sveltekit-cloudflare-kv.png
 author: Me
 published: true
 ---
-This guide will walk you through integrating Cloudflare KV with your SvelteKit application, from initial setup to advanced usage patterns. 🚀
+This guide walks through integrating Cloudflare KV with a SvelteKit app deployed on Cloudflare — creating the namespace, binding it in `wrangler.toml`, exposing it through SvelteKit's `event.locals`, and the basic read/write patterns in server routes.
 
 ## Initial Setup
 
@@ -46,7 +47,7 @@ You can do that by running this command
 ```shell
 npm i -D wrangler
 ```
-Then run this command to create new KV namespace, you do not need this if you already have a KV namespace created in your alouflare account, you can just use it.
+Then run this command to create a new KV namespace. If you already have a KV namespace in your Cloudflare account, skip this step and use the existing one.
 Take note the id generated so that we can use it in our app
 ```shell
 npx wrangler kv:namespace create "MY_NAMESPACE"
@@ -160,3 +161,9 @@ export const load: PageServerLoad = async ({ platform }) => {
   }
 };
 ```
+
+## What KV is and isn't good for
+
+KV is eventually consistent — a write from one region can take up to ~60 seconds to propagate globally. That's fine for rate-limit counters, feature flags, cached API responses, and user preferences. It's not fine for anything where "read-your-writes" matters within the same session, or for anything that needs a guaranteed atomic update.
+
+For strongly-consistent per-row reads and writes on Cloudflare, reach for D1 — the [setup guide](/posts/setup-d1-cloudflare-worker-with-drizzle) covers that path.

@@ -1,33 +1,31 @@
 ﻿---
-title: Use Sveltekit with Wails app
-description: In this article, we explore integrating SvelteKit with a Wails app. We will create a Wails project named ‘todo-app’ and update the Wails app by modifying the ‘wails.json’ file to include frontend-related commands. Revamp the frontend by setting up SvelteKit. Enjoy your new Wails App powered by SvelteKit! 🚀
+title: 'Use SvelteKit with a Wails desktop app'
+description: Wails bundles a Go backend with a web frontend into a native desktop binary. The default scaffold uses vanilla Svelte; swapping in SvelteKit as the frontend takes four config changes and an SPA-mode layout file.
 date: '2023-11-19'
+updated: '2026-04-22'
 categories:
   - sveltekit
   - svelte
   - wails
+  - go
 image: /images/wail-svelte.png
 author: Me
 published: true
 ---
-Hello there! Before we begin our journey, let's make sure you have these installed on your system:
-- Go SDK
-- Node.js
-- Wails CLI
-- pnpm
+[Wails](https://wails.io) bundles a Go backend with a web frontend into a native desktop binary. The default Svelte template uses vanilla Svelte; this swaps it for SvelteKit in SPA mode — four config changes and a layout file.
 
-Don't worry if you're not familiar with these terms, consider them as tools needed to build our project. Ready? Let's start!
+Prerequisites: Go SDK, Node.js, the Wails CLI, and pnpm.
 
-## Step 1: Create a Wails Project
-First, we need to create a new project using Wails. Let's name our project 'todo-app'. You can use terminal or command prompt for this:
+## Step 1: Create a Wails project
 
-```
+Scaffold a new project (named `todo-app` in this walkthrough) with the Svelte TypeScript template:
+
+```shell
 wails init -n todo-app -t svelte-ts
-cd .\todo-app\
+cd ./todo-app
 ```
-With these commands, we are creating a directory called '**todo-app**'.
 
-Check out the project! You may notice a directory named "**frontend**". This is where the Svelte app will be available.
+That creates a `todo-app` directory with a `frontend/` folder — the default vanilla-Svelte scaffold. We're going to replace that folder with a SvelteKit one in step 3.
 
 ## Step 2: Update Wails App
 In the todo-app folder, look for the **wails.json** file and add these lines:
@@ -93,16 +91,24 @@ export const ssr = false;
 ```
 
 
-## Step 5: Test Your Wails App
-Let's start our app to see how it looks. Run this command in the root folder:
+## Step 5: Run in dev mode
+
+From the project root:
+
 ```shell
 wails dev
 ```
-## Step 6: Build Your Wails App
-Satisfied with the app? Fantastic! Now, let's build our app. Run this command:
+
+Wails starts both the Go backend and the SvelteKit dev server, wires up hot reload for both, and opens the embedded webview.
+
+## Step 6: Produce a release binary
+
 ```shell
 wails build
 ```
-Upon successful build, you'll see an executable file in the `build\bin` directory. You can launch the file and enjoy your new Wails App powered by Sveltekit!
 
-Cheers to your first Wails App!
+You'll find the executable in `build/bin/`. That's a standalone native binary — ship it directly, no Node runtime required.
+
+## What you've traded off
+
+SPA mode (`ssr = false`, `prerender = false`) is the right fit here because the app runs in Wails's embedded webview, not a browser hitting a server — there's no "server" to render on. You lose SvelteKit's server-load functions, form actions, and streaming, which don't make sense in this environment anyway. What you keep is SvelteKit's routing, layouts, `$lib` aliases, and the broader ecosystem of Svelte tooling — all the frontend productivity, none of the server-rendering machinery that doesn't apply.

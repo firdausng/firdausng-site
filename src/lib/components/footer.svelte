@@ -25,6 +25,11 @@
                     {5173 + i}-&gt;{nav.name.toLowerCase()}
                 </a>
             {/each}
+            <a href="/rss.xml"
+               class="px-1 text-primary-500 hover:text-primary-400 transition-colors"
+               title="RSS feed">
+                {5173 + navigations.length}-&gt;rss
+            </a>
         </div>
     </div>
 </footer>

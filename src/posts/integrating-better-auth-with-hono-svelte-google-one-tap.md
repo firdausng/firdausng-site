@@ -1,15 +1,13 @@
 ﻿---
-title: 'Integrate Better Auth and Google One Tap with Hono and Svelte'
-date: "2025-10-9"
-description: A comprehensive guide to setting up Better Auth with Google One Tap authentication in a SvelteKit application using Hono and Cloudflare Workers 🚀
+title: 'Integrate Better Auth and Google One Tap with Hono and SvelteKit'
+date: "2025-10-09"
+description: A walkthrough of wiring Better Auth with Google One Tap into a SvelteKit app, using Hono for the API layer and Cloudflare D1 + Workers for the backend.
 categories:
   - better auth
-  - Google One Tap
+  - google one tap
   - hono
-  - svelte
   - sveltekit
   - drizzle
-  - cloudflare
   - cloudflare workers
   - cloudflare D1
 author: Me
@@ -448,14 +446,9 @@ When deploying to Cloudflare Workers:
 - [Drizzle ORM Documentation](https://orm.drizzle.team)
 - [better-sqlite3 GitHub Issue #146](https://github.com/WiseLibs/better-sqlite3/issues/146)
 
-## Conclusion
+## Wrap-up
 
-You now have a fully functional authentication system with Google One Tap integration running on Cloudflare Workers. This setup provides a secure, scalable solution with minimal latency thanks to Cloudflare's edge network.
+Three moving parts once it's wired: the Better Auth instance (server-side, one per request, pulls D1 bindings from `c.env`), the catch-all Hono route at `/api/...` that hands the HTTP request to Better Auth's handler, and the client-side `authClient` factory that the page code calls for `signIn.social({ provider: 'google' })`.
 
-For production use, remember to:
-- Enable email verification
-- Set up proper error handling
-- Implement rate limiting
-- Configure secure session management
-- Add monitoring and logging
+Before shipping to production, the two non-optional flips are `requireEmailVerification: true` (currently false in the config above) and setting `BETTER_AUTH_SECRET` to a properly random value via `wrangler secret put`. The Google OAuth redirect URI in the Google Cloud Console also needs to include your production domain, not just `localhost`.
 

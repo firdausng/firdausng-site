@@ -1,13 +1,13 @@
 ﻿---
-title: 'Load testing single page application using jmeter is not straightforward'
+title: 'Load testing a single-page application with JMeter is not straightforward'
 date: "2018-05-31"
 categories:
-  - Performance Test
+  - performance test
   - jmeter
 published: true
 author: Me
 image: /images/load-testing-single-page-application-using-jmeter.webp
-description: Load testing SPAs with JMeter can be challenging due to their asynchronous nature. SPAs use JavaScript to render HTML pages and send requests via the XMLHttpRequest object1. However, JMeter sends HTTP requests sequentially, affecting response times. For example, if a SPA button triggers three concurrent XMLHttpRequests, JMeter processes them sequentially, leading to inaccurate response times. Solutions include custom JSR223 Sampler, Custom AJAX Request Sampler, and WebDriver Sampler, but each has limitations. Performance test engineers must understand the application’s architecture for realistic load testing in JMeter
+description: JMeter sends HTTP requests sequentially, but SPAs fire multiple XHRs in parallel. The result is inflated response times that don't reflect what a real user sees. Custom samplers (JSR223, AJAX, WebDriver) can work around it, each with its own cost.
 ---
 
 It is always tricky whenever i need to perform load testing a [single page application site (SPA)](https://en.wikipedia.org/wiki/Single-page_application) using jmeter. SPA is built using JavaScript to render the html page and used **XMLHttpRequest** object to send request to server. XMLHttpRequest is executed by javascript and can be sent as **asynchronous** request which mean that multiple XMLHttpRequest objects can be executed at the same time.

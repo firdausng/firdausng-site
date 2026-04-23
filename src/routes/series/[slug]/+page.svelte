@@ -3,6 +3,10 @@ import { url, title } from "$lib/config";
 import { page } from "$app/state";
 import Comments from "$lib/components/comment.svelte";
 export let data;
+
+$: absoluteImage = data.meta.image
+    ? (data.meta.image.startsWith('http') ? data.meta.image : `${url}${data.meta.image}`)
+    : null;
 </script>
 
 <!-- SEO -->
@@ -17,14 +21,18 @@ export let data;
     <meta property="og:title" content={data.meta.title} />
     <meta property="og:description" content={data.meta.description} />
     <meta property="og:site_name" content={title} />
-    <meta property="og:image" content={data.meta.image} />
+    {#if absoluteImage}
+        <meta property="og:image" content={absoluteImage} />
+    {/if}
 
     <meta name="twitter:site" content="@firdausng_byte" />
     <meta name="twitter:creator" content="@firdausng_byte" />
     <meta name="twitter:title" content={data.meta.title} />
     <meta name="twitter:description" content={data.meta.description} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image:src" content={data.meta.image} />
+    <meta name="twitter:card" content={absoluteImage ? 'summary_large_image' : 'summary'} />
+    {#if absoluteImage}
+        <meta name="twitter:image:src" content={absoluteImage} />
+    {/if}
     <meta name="twitter:widgets:new-embed-design" content="on" />
 
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />

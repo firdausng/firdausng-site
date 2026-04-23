@@ -1,15 +1,18 @@
 ﻿---
-title: 'Managing Multiple Git SSH Keys for GitHub on Windows'
+title: 'Managing multiple Git SSH keys for GitHub on Windows'
 date: '2023-07-24'
-tags: ['git']
+updated: '2026-04-22'
+categories:
+  - git
+  - github
+  - windows
 published: true
 image: /images/Managing-Multiple-Git-SSH-Keys-for-Git-on-Windows.jpg
 author: Me
-description: "If you're an avid GitHub user and have multiple GitHub accounts, you might have encountered challenges when working with repositories from different accounts on the same machine. By default, Git uses a single SSH key for authentication, but fortunately, there's a solution! In this tutorial, we'll walk you through the process of setting up and managing multiple Git SSH keys on a Windows machine for different GitHub accounts."
+description: "Working with multiple GitHub accounts on one Windows machine means one SSH key per account, plus an SSH config alias so git knows which key to use per host. Five steps — generate the keys, add them to the agent, write the config file, rewrite the remote URL, and upload the public keys."
 ---
-## Table of contents
 
-If you're an avid GitHub user and have multiple GitHub accounts, you might have encountered challenges when working with repositories from different accounts on the same machine. By default, Git uses a single SSH key for authentication, but fortunately, there's a solution! In this tutorial, we'll walk you through the process of setting up and managing multiple Git SSH keys on a Windows machine for different GitHub accounts.
+Working with multiple GitHub accounts on one Windows machine means one SSH key per account, plus an SSH config alias so git knows which key to use per host. The whole setup is five steps once, then you never think about it again.
 ## Step 1: Generate the SSH keys
 First, let's create two separate SSH keys for each of your GitHub accounts. Open a Command Prompt or PowerShell window, and use the ssh-keygen command to generate the keys:
 
@@ -83,11 +86,6 @@ git clone git@github.com-seconduser:user2/repo2.git
 
 Finally, go to GitHub and add the respective public keys (`github_key1.pub` and `github_key2.pub`) to the corresponding GitHub accounts, just as mentioned in the previous steps.
 
-Now, you can effortlessly work with different GitHub accounts on your Windows machine using the appropriate SSH key for each repository. Enjoy a seamless and efficient GitHub experience without the hassle of switching accounts!
+From here on, git uses the SSH key that matches the host alias in the remote URL — `github.com` picks up `github_key1`, `github.com-seconduser` picks up `github_key2`. The only time you touch any of this again is when you add a third account, at which point you repeat the same five steps with a new alias.
 
-I hope you found this tutorial helpful. Happy coding!
-
-
-> Note: Remember to replace your_user and your_email@example.com with your actual
-> username and email address. Additionally, modify the repository URLs in Step 4 to
-> match your specific repository locations.
+> Remember to replace `your_user` and `your_email@example.com` with your actual username and email, and update the repository URLs in Step 4 to match your specific repository locations.
