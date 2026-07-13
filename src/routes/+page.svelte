@@ -3,34 +3,8 @@
     import ProjectCard from "$lib/components/ProjectCard.svelte";
     import SocialLink from "$lib/components/social-link.svelte";
     import {github, email} from "$lib/config";
+    import {PROJECTS as projects} from "$lib/config/projects";
     let { data } = $props();
-
-    const projects = [
-        {
-            name: 'DuitGee',
-            description: 'A group expense-tracking platform enabling shared cost management among roommates, travelers, and families. Establish shared accounts and reconcile debts seamlessly.',
-            tags: ['cloudflare', 'svelte', 'hono', 'drizzle'],
-            url: 'https://duitgee.com',
-            logo: 'https://duitgee.com/favicon.svg',
-            status: 'Live',
-        },
-        {
-            name: 'Gee Ledger',
-            description: 'An accounting platform for freelancers and entrepreneurs managing multiple ventures. Handle invoicing, income tracking, and team administration across different businesses.',
-            tags: ['cloudflare', 'svelte', 'hono', 'drizzle'],
-            url: 'https://geeledger.com',
-            logo: 'https://geeledger.com/favicon.svg',
-            status: 'Live',
-        },
-        {
-            name: 'BikeSynergy',
-            description: 'A specialized mountain bike retailer offering equipment sales, on-campus maintenance services, and professional coaching with over two decades of industry experience.',
-            tags: ['cloudflare', 'svelte', 'hono'],
-            url: 'https://bikesynergy.com',
-            logo: 'https://bikesynergy.com/favicon.ico?v=2',
-            status: 'Live',
-        },
-    ];
 
     const skills = [
         { repo: 'TypeScript', tag: 'latest', size: 'expert' },
@@ -140,7 +114,7 @@
            class="block group rounded-lg border-2 border-primary-400 dark:border-primary-600 bg-gradient-to-r from-primary-50 via-white to-primary-50 dark:from-primary-950 dark:via-primary-900/80 dark:to-primary-950 overflow-hidden hover:border-primary-500 dark:hover:border-primary-500 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/20">
             <div class="flex items-center gap-2 px-4 py-2 bg-primary-100/80 dark:bg-primary-900/80 border-b border-primary-300 dark:border-primary-700">
                 <span class="font-mono text-sm text-primary-600 dark:text-primary-300">~/workspace/fivebitrate</span>
-                <span class="font-mono text-xs px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300">3 projects</span>
+                <span class="font-mono text-xs px-2 py-0.5 rounded-full bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-300">{projects.length} projects</span>
                 <span class="ml-auto flex items-center gap-3 text-primary-400 dark:text-primary-500">
                     <span class="text-xs">&#x2500;</span>
                     <span class="text-xs">&#x25A1;</span>
@@ -154,7 +128,7 @@
                         <span class="font-mono text-xs px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">production</span>
                     </div>
                     <p class="text-lg text-gray-600 dark:text-gray-300">Building software that simplifies your businesses.</p>
-                    <p class="text-sm text-gray-500 dark:text-gray-400">Finance tools, expense tracking & accounting platforms for individuals and small businesses.</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Software & digital products for individuals and small businesses.</p>
                     <div class="flex flex-wrap items-center gap-2 sm:gap-4 pt-2">
                         {#each projects as project}
                             <div class="flex items-center gap-2 px-2 sm:px-3 py-1.5 rounded-lg border border-primary-200 dark:border-primary-700 bg-white/60 dark:bg-primary-900/40">
