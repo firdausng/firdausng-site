@@ -1,5 +1,6 @@
 <script lang="ts">
     import {title} from "$lib/config";
+    import {PROJECTS} from "$lib/config/projects";
 </script>
 
 <svelte:head>
@@ -57,6 +58,30 @@
                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
                         My name is Firdaus Kamaruddin, mostly people called me as 'Firdaus'. I am a full-time developer, working predominantly in full stack ASP.NET development in Kuala Lumpur, Malaysia. I graduated with a degree in Electronic Engineering from Malaysia Multimedia University in 2012. I have experience primarily with C# and JavaScript/TypeScript, working mostly in MVC.
                     </p>
+                </div>
+            </div>
+
+            <!-- ls ~/projects — what I'm building -->
+            <div id="projects" class="space-y-3 scroll-mt-24">
+                <div class="font-mono text-sm text-primary-500 dark:text-primary-400">$ ls ~/projects</div>
+                <div class="grid gap-3 sm:grid-cols-2">
+                    {#each PROJECTS as project (project.url)}
+                        <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group rounded-lg bg-gray-50 dark:bg-primary-900/30 p-4 border border-primary-100 dark:border-primary-800 hover:border-primary-300 dark:hover:border-primary-600 transition-colors"
+                        >
+                            <div class="flex items-baseline justify-between gap-2">
+                                <span class="font-mono text-sm font-semibold text-gray-800 dark:text-gray-100">{project.name}</span>
+                                <span class="font-mono text-[0.65rem] uppercase tracking-wide text-primary-500 dark:text-primary-400 whitespace-nowrap">{project.role}</span>
+                            </div>
+                            <p class="mt-1.5 text-sm text-gray-600 dark:text-gray-300 leading-snug">{project.blurb}</p>
+                            <span class="mt-2 inline-flex items-center gap-1 font-mono text-xs text-primary-500 group-hover:text-primary-600 dark:group-hover:text-primary-300">
+                                {project.url.replace('https://', '')} &#8599;
+                            </span>
+                        </a>
+                    {/each}
                 </div>
             </div>
 
